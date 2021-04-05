@@ -1,8 +1,11 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Resources:
-  test:
-    Type: AWS::S3::Bucket
-Outputs:
-  BucketName:
-    Value: !Ref 'test'
-    Description: Name of the sample Amazon S3 bucket.
+Type: AWS::SecretsManager::Secret
+Properties: 
+  Description: new secrets
+  GenerateSecretString: 
+    GenerateSecretString
+  KmsKeyId: test
+  Name: test23
+  SecretString: 
+    test123
+  Tags: 
+    - Tag

@@ -1,11 +1,20 @@
-Type: AWS::SecretsManager::Secret
-Properties: 
-  Description: new secrets
-  GenerateSecretString: 
-    GenerateSecretString
-  KmsKeyId: test
-  Name: test23
-  SecretString: 
-    test123
-  Tags: 
-    - Tag
+---
+Description: "How to create and retrieve secrets securely using an AWS CloudFormation template"
+Resources:
+
+# Create a secret with the username admin and a randomly generated password in JSON.  
+  MyRDSInstanceRotationSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Description: 'This is the secret for my RDS instance'
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "admin"}'
+        GenerateStringKey: 'password'
+        PasswordLength: 16
+        ExcludeCharacters: '"@/\'
+
+
+
+
+
+

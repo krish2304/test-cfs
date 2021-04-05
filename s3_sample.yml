@@ -1,20 +1,8 @@
----
-Description: "How to create and retrieve secrets securely using an AWS CloudFormation template"
+AWSTemplateFormatVersion: '2010-09-09'
 Resources:
-
-# Create a secret with the username admin and a randomly generated password in JSON.  
-  MyRDSInstanceRotationSecret:
-    Type: AWS::SecretsManager::Secret
-    Properties:
-      Description: 'This is the secret for my RDS instance'
-      GenerateSecretString:
-        SecretStringTemplate: '{"username": "admin"}'
-        GenerateStringKey: 'password'
-        PasswordLength: 16
-        ExcludeCharacters: '"@/\'
-
-
-
-
-
-
+  S3Bucket:
+    Type: AWS::S3::Bucket
+Outputs:
+  BucketName:
+    Value: !Ref 'S3Bucket'
+    Description: Name of the sample Amazon S3 bucket.
